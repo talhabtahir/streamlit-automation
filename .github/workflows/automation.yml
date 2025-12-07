@@ -1,0 +1,31 @@
+name: Scheduled Site Visit
+
+on:
+  schedule:
+    # 3:00 AM Pakistan time = 22:00 UTC (previous day)
+    - cron: "0 22 * * *"
+    # 3:00 PM Pakistan time = 10:00 UTC
+    - cron: "0 10 * * *"
+  workflow_dispatch:   # allows manual run too
+
+jobs:
+  visit-site:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Install dependencies
+        run: |
+          pip install playwright
+          python -m playwright install
+
+      - name: Run script
+        run: |
+          python script.py
