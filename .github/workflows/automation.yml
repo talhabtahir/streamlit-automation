@@ -2,11 +2,8 @@ name: Scheduled Site Visit
 
 on:
   schedule:
-    # 3:00 AM Pakistan time = 22:00 UTC (previous day)
-    - cron: "0 22 * * *"
-    # 3:00 PM Pakistan time = 10:00 UTC
-    - cron: "0 10 * * *"
-  workflow_dispatch:   # allows manual run too
+    - cron: "*/15 * * * *"   # Every 15 minutes
+  workflow_dispatch:          # Allows manual run too
 
 jobs:
   visit-site:
