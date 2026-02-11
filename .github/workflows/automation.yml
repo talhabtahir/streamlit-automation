@@ -2,7 +2,7 @@ name: Scheduled Site Visit
 
 on:
   schedule:
-    - cron: "*/15 * * * *"   # Every 15 minutes
+    - cron: "*/50 * * * *"   # Every 50 minutes
   workflow_dispatch:          # Allows manual run too
 
 jobs:
